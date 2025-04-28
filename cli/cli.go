@@ -37,20 +37,20 @@ var (
 
 // RootCmd is the main command for the circle-pinger CLI
 var RootCmd = &cobra.Command{
-	Use:   "tcping host port",
-	Short: "tcping is a multi-protocol ping tool",
-	Long:  "tcping is a ping tool that supports TCP, UDP, HTTP, and HTTPS protocols",
+	Use:   "circle-pinger host port",
+	Short: "circle-pinger is a multi-protocol ping tool",
+	Long:  "circle-pinger is a ping tool that supports TCP, UDP, HTTP, and HTTPS protocols",
 	Example: `
   1. ping over tcp
-    > tcping google.com
+    > circle-pinger google.com
   2. ping over tcp with custom port
-    > tcping google.com 443
+    > circle-pinger google.com 443
   3. ping over http
-    > tcping http://google.com
+    > circle-pinger http://google.com
   4. ping over https
-    > tcping https://google.com
+    > circle-pinger https://google.com
   5. ping over udp (e.g., DNS server)
-    > tcping udp://8.8.8.8:53
+    > circle-pinger udp://8.8.8.8:53
 	`,
 	Run: runCommand,
 }
@@ -194,7 +194,7 @@ func fixProxy(proxy string, op *pinger.Option) error {
 func Initialize() {
 	// HTTP method and user agent flags
 	RootCmd.Flags().StringVar(&httpMethod, "http-method", "GET", `Use custom HTTP method instead of GET in http mode.`)
-	ua := RootCmd.Flags().String("user-agent", "tcping", `Use custom UA in http mode.`)
+	ua := RootCmd.Flags().String("user-agent", "circle-pinger", `Use custom UA in http mode.`)
 
 	// Meta info flag
 	meta := RootCmd.Flags().Bool("meta", false, `With meta info`)

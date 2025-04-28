@@ -22,10 +22,10 @@ git clone https://github.com/circle-protocol/circle-pinger.git
 cd circle-pinger
 
 # Build the binary
-go build -o tcping
+go build -o circle-pinger
 
 # Install to your PATH (optional)
-sudo mv tcping /usr/local/bin/
+sudo mv circle-pinger /usr/local/bin/
 ```
 
 ### Using Go Install
@@ -40,49 +40,49 @@ go install github.com/circle-protocol/circle-pinger@latest
 
 ```bash
 # TCP ping (default port 80)
-tcping google.com
+circle-pinger google.com
 
 # TCP ping with custom port
-tcping google.com 443
+circle-pinger google.com 443
 
 # HTTP ping
-tcping http://google.com
+circle-pinger http://google.com
 
 # HTTPS ping
-tcping https://google.com
+circle-pinger https://google.com
 
 # UDP ping (e.g., DNS server)
-tcping udp://8.8.8.8:53
+circle-pinger udp://8.8.8.8:53
 ```
 
 ### Command-Line Options
 
 ```
 Usage:
-  tcping host port [flags]
+  circle-pinger host port [flags]
 
 Examples:
   1. ping over tcp
-    > tcping google.com
+    > circle-pinger google.com
   2. ping over tcp with custom port
-    > tcping google.com 443
+    > circle-pinger google.com 443
   3. ping over http
-    > tcping http://google.com
+    > circle-pinger http://google.com
   4. ping over https
-    > tcping https://google.com
+    > circle-pinger https://google.com
   5. ping over udp (e.g., DNS server)
-    > tcping udp://8.8.8.8:53
+    > circle-pinger udp://8.8.8.8:53
 
 Flags:
   -c, --counter int           ping counter (default 4)
   -D, --dns-server strings    Use the specified dns resolve server
-  -h, --help                  help for tcping
+  -h, --help                  help for circle-pinger
       --http-method string    Use custom HTTP method instead of GET in http mode (default "GET")
   -I, --interval string       ping interval, units are "ns", "us" (or "µs"), "ms", "s", "m", "h" (default "1s")
       --meta                  With meta info
       --proxy string          Use HTTP proxy
   -T, --timeout string        connect timeout, units are "ns", "us" (or "µs"), "ms", "s", "m", "h" (default "1s")
-      --user-agent string     Use custom UA in http mode (default "tcping")
+      --user-agent string     Use custom UA in http mode (default "circle-pinger")
   -v, --version               show the version and exit
 ```
 
@@ -92,37 +92,37 @@ Flags:
 
 ```bash
 # Basic TCP ping to port 80
-tcping google.com
+circle-pinger google.com
 
 # TCP ping to a specific port with 10 pings and 2s timeout
-tcping google.com 443 -c 10 -T 2s
+circle-pinger google.com 443 -c 10 -T 2s
 ```
 
 ### HTTP/HTTPS Ping
 
 ```bash
 # HTTP ping with custom method and user agent
-tcping http://api.example.com --http-method POST --user-agent "MyApp/1.0"
+circle-pinger http://api.example.com --http-method POST --user-agent "MyApp/1.0"
 
 # HTTPS ping with meta information (shows TLS details)
-tcping https://github.com --meta
+circle-pinger https://github.com --meta
 ```
 
 ### UDP Ping
 
 ```bash
 # UDP ping to DNS server
-tcping udp://8.8.8.8:53
+circle-pinger udp://8.8.8.8:53
 
 # UDP ping with custom timeout and interval
-tcping udp://8.8.8.8:53 -T 3s -I 2s
+circle-pinger udp://8.8.8.8:53 -T 3s -I 2s
 ```
 
 ### Using Custom DNS Servers
 
 ```bash
 # Use Cloudflare's DNS server for name resolution
-tcping google.com -D 1.1.1.1
+circle-pinger google.com -D 1.1.1.1
 ```
 
 ## Output Format
